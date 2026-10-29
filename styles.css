@@ -346,3 +346,17 @@ footer { padding-block: 22px; font-size: 14px; color: var(--muted); }
 
 @media (max-width:720px){.size .btns .txt{display:none}}
 .size .btns .dark{background:transparent;color:var(--rust);border:3px solid var(--rust)}
+
+/* Support the UP long logo (footer) */
+.sutwrap{display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center}
+.sutlogo{display:inline-flex;align-items:stretch;background:#0e0f31;border:3px solid #0e0f31;text-decoration:none;color:#fff;font-family:"Anton","Barlow Condensed","Arial Narrow",Arial,sans-serif;text-transform:uppercase;line-height:1}
+.sutlogo .u{display:flex;align-items:center;gap:10px;padding:12px 18px}
+.sutlogo .up{font-size:58px;color:#0dc0df;letter-spacing:.01em}
+.sutlogo .pc{font-size:36px;color:#fff;letter-spacing:.02em;-webkit-text-stroke:3px #0dc0df;paint-order:stroke fill}
+.sutlogo .bar{width:6px;background:#0dc0df}
+.sutlogo .by{display:flex;flex-direction:column;justify-content:center;gap:4px;padding:10px 18px;text-align:left}
+.sutlogo .by small{font-family:"Public Sans",Arial,sans-serif;font-weight:700;font-size:11px;letter-spacing:.14em;color:#b9c3e6}
+.sutlogo .by b{font-weight:400;font-size:26px;letter-spacing:.04em;color:#fff}
+.sutlogo .by b i{font-style:normal;color:#0dc0df}
+.sutwrap p{margin:0}
+@media (max-width:520px){.sutlogo .up{font-size:44px}.sutlogo .pc{font-size:27px;-webkit-text-stroke-width:2px}.sutlogo .u{padding:10px 12px;gap:7px}.sutlogo .by{padding:8px 12px}.sutlogo .by b{font-size:20px}.sutlogo .by small{font-size:9.5px}}
