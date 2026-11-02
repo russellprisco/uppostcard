@@ -19,7 +19,7 @@
 .plans{margin-top:20px;display:flex;flex-wrap:wrap;gap:0;border:2px solid var(--ink);border-radius:999px;overflow:hidden;width:fit-content;max-width:100%}
 .plans button{border:0;background:transparent;color:var(--ink);font:700 17px var(--font-body);padding:12px 20px;cursor:pointer}
 .plans button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
-.phead{margin-top:16px;padding:14px 18px;background:#1e7a4c;color:#fff;font-family:var(--font-display);font-weight:700;font-size:clamp(22px,4.4vw,30px);line-height:1.12;max-width:760px}
+.phead{margin-top:16px;padding:16px 20px;background:#1e7a4c;color:#fff;display:flex;flex-direction:column;gap:4px}.ph1{font-family:var(--font-display);font-weight:700;font-size:clamp(22px,3.8vw,34px);line-height:1.1}.ph2{font-size:clamp(16px,2.4vw,20px);font-weight:600;opacity:.95}
 .pnote{margin-top:14px;max-width:760px;color:var(--muted)}
 .res{margin-top:22px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
 .rc{background:var(--surface);border:1px solid var(--line);padding:18px;display:flex;flex-direction:column;gap:6px;border-top:5px solid #c1272d}.rc:nth-child(even){border-top-color:#1e7a4c}
@@ -124,9 +124,9 @@ var SIZES = [
   { k: "quad", n: "4-spot ad", today: "$1,200", full: "$9,840", q: "$2,400", m: "", sv: { full: "$5,760", quarterly: "$4,800", monthly: "" }, cph: { full: "14.4", quarterly: "16", monthly: "" }, tot: { full: "$9,840", quarterly: "$10,800", monthly: "" } }
 ];
 var PLAN = {
-  full: { label: "Pay in full", head: "One payment covers it all: your Holiday Card at half off and all four 2027 cards at 10% off.", note: "Best value. Save an extra 10% on your 2027 cards and get first pick of your spot. One payment today covers your half-off Holiday Card and all four 2027 cards.", terms: "By completing your order, you agree to a 12-month commitment for all four 2027 cards. Payments are non-refundable." },
-  quarterly: { label: "Quarterly", head: "Pay just half of your Holiday Card today. I cover the other half, and your payments don't start until " + START + ".", note: "Pay half of your Holiday Card ad today. Your special rate is billed before each 2027 card, 4 payments starting in " + START + ".", terms: "By completing your order, you agree to a 12-month commitment for all four 2027 cards." },
-  monthly: { label: "Monthly", head: "Pay just half of your Holiday Card today. I cover the other half, and your monthly payments don't start until " + START + ".", note: "Pay half of your Holiday Card ad today, then 12 monthly payments starting in " + START + ". Monthly is slightly higher because it is spread over 12 payments. Coupon, single and double only.", terms: "By completing your order, you agree to a 12-month commitment for all four 2027 cards." }
+  full: { label: "Pay in full", head: "One payment and you're set through 2027.", sub: "Half off your Holiday Card, plus 10% off all four 2027 cards.", note: "Best value. Save an extra 10% on your 2027 cards and get first pick of your spot. One payment today covers your half-off Holiday Card and all four 2027 cards.", terms: "By completing your order, you agree to a 12-month commitment for all four 2027 cards. Payments are non-refundable." },
+  quarterly: { label: "Quarterly", head: "Pay just half of your Holiday Card today. Payments start next year.", sub: "I'm covering the other half.", note: "Pay half of your Holiday Card ad today. Your special rate is billed before each 2027 card, 4 payments starting in " + START + ".", terms: "By completing your order, you agree to a 12-month commitment for all four 2027 cards." },
+  monthly: { label: "Monthly", head: "Pay just half of your Holiday Card today. Payments start next year.", sub: "I'm covering the other half.", note: "Pay half of your Holiday Card ad today, then 12 monthly payments starting in " + START + ". Monthly is slightly higher because it is spread over 12 payments. Coupon, single and double only.", terms: "By completing your order, you agree to a 12-month commitment for all four 2027 cards." }
 };
 var cur = "full";
 function num(x) { return parseInt(String(x).replace(/[$,]/g, ''), 10) || 0; }
@@ -135,7 +135,7 @@ function smsFor(s, p) { return 'sms:+19062990083?&body=' + encodeURIComponent("H
 function render() {
   var res = document.getElementById('res'); res.innerHTML = '';
   document.getElementById('pnote').textContent = PLAN[cur].note;
-  document.getElementById('phead').textContent = PLAN[cur].head;
+  document.getElementById('phead').innerHTML = '<span class="ph1">' + PLAN[cur].head + '</span><span class="ph2">' + PLAN[cur].sub + '</span>';
   document.getElementById('terms').textContent = PLAN[cur].terms;
   SIZES.forEach(function (s) {
     var d = document.createElement('div'); d.className = 'rc';
