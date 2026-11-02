@@ -40,6 +40,13 @@
 .wmy .wh{color:var(--rust)}.wmy .wp b{color:var(--ink)}
 .rc:nth-child(odd){border-top:5px solid #c1272d}.rc:nth-child(even){border-top:5px solid #1e7a4c}
 .why li::before{color:#1e7a4c}
+.tl{margin:24px 0 0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.tl li{background:var(--surface);border:1px solid var(--line);border-top:5px solid #c1272d;padding:16px}.tl li:nth-child(even){border-top-color:#1e7a4c}
+.tl b{display:block;font-family:var(--font-display);font-size:24px;text-transform:uppercase;line-height:1.05}
+.tl span{display:block;margin-top:6px;color:var(--muted)}
+.cols2{margin-top:22px;display:grid;grid-template-columns:1fr 1fr;gap:18px;max-width:900px}.cols2 h3{font-size:24px;text-transform:uppercase;color:var(--lake)}.cols2 p{margin:6px 0 0}
+@media (max-width:900px){.tl{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:640px){.cols2{grid-template-columns:1fr}.tl{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -76,6 +83,24 @@
     <p class="line2">Buy two areas, get the third free. Holiday 2026 card only.</p>
     <p class="when">Hitting mailboxes the first week of December &middot; Final spots through November 12 or until they sell out</p>
   </div></div>
+</section>
+
+<section class="s band" id="timing">
+  <div class="wrap">
+    <p class="label">Right on time</p>
+    <h2>In their mailboxes before the holidays</h2>
+    <p class="lead">The holiday card mails the first week of December, so it is in about 15,000 homes while people are planning parties, buying gifts and spending locally. Then it stays on the fridge and the counter well into the new year.</p>
+    <ol class="tl">
+      <li><b>By Nov 12</b><span>Final spots close, or sooner if they sell out.</span></li>
+      <li><b>First week of December</b><span>The card hits about 15,000 mailboxes.</span></li>
+      <li><b>All December</b><span>Holiday shopping, gift cards, parties and catering.</span></li>
+      <li><b>January and beyond</b><span>Still on the fridge when winter and new-year needs come up.</span></li>
+    </ol>
+    <div class="cols2">
+      <div><h3>Restaurants, shops and salons</h3><p>Reach people while they are choosing where to eat, shop and spend for the holidays. Coupons and gift card offers get used and kept.</p></div>
+      <div><h3>Service businesses</h3><p>People hold on to the card, so when a customer needs a roofer, mechanic, plumber or cleaner, you are the number they already have on the fridge.</p></div>
+    </div>
+  </div>
 </section>
 
 <section class="s band" id="card">
