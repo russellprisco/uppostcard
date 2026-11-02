@@ -47,6 +47,19 @@
 .cols2{margin-top:22px;display:grid;grid-template-columns:1fr 1fr;gap:18px;max-width:900px}.cols2 h3{font-size:24px;text-transform:uppercase;color:var(--lake)}.cols2 p{margin:6px 0 0}
 @media (max-width:900px){.tl{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:640px){.cols2{grid-template-columns:1fr}.tl{grid-template-columns:1fr}}
+
+.cta-row .btn{justify-content:center;text-align:center}
+@media (max-width:640px){.cta-row{flex-direction:column;align-items:stretch}.cta-row .btn{width:100%;min-height:54px}.numline{margin-top:14px}}
+.reassure a{color:inherit;text-decoration:underline;font-weight:700}
+.numline a{color:inherit}
+.lead.small{font-size:15px;margin-top:16px}
+.plans{margin-top:18px;display:inline-flex;gap:0;border:2px solid var(--ink);border-radius:999px;overflow:hidden}
+.plans[hidden]{display:none}
+.plans button{border:0;background:transparent;color:var(--ink);font:700 16px var(--font-body);padding:10px 18px;cursor:pointer}
+.plans button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+nav.sticky{transition:transform .2s;transform:translateY(110%)}nav.sticky:not(.show){visibility:hidden}nav.sticky.show{transform:none}
+nav.sticky .one{flex:1}
+@media (min-width:861px){nav.sticky{display:none}}
 </style>
 </head>
 <body>
@@ -64,20 +77,16 @@
   <div class="wrap">
     <p class="label" style="color: var(--hero-muted)">Holiday 2026 postcard &middot; Houghton County, Michigan</p>
     <h1 style="margin-top:10px">Get Your Business in Front of <em>15,000</em> Local Households This Holiday Season<span class="h1b">For as little as 3 cents per household</span></h1>
-    <p class="sub">Support the UP mails one oversized, full-color holiday postcard full of local deals to about 15,000 homes across Houghton, Hancock, Calumet, Laurium, Lake Linden, Chassell and Mohawk. It mails the first week of December, when people plan holiday spending and shop local. One business per category. Printing, postage and design are included.</p>
-    <div class="cta-row">
-      <a class="btn primary" data-msg="check" href="sms:+19062990083?&body=Hi%20there%2C%20I%27d%20like%20to%20check%20my%20category%20and%20get%20a%20free%20mockup%20for%20the%20Houghton%20County%20holiday%20postcard.%20My%20business%20is%3A%20">Check my category + free mockup</a>
-      <a class="btn ghost" href="#reserve">Reserve my spot</a>
-    </div>
-    <p class="reassure">Free mockup, no pressure. See your ad first and only move forward if you love it.</p>
-    <p class="numline">Or call or text: <strong id="num">(906) 299-0083</strong><button class="copy" id="copy" type="button">Copy number</button></p>
+    <p class="sub">One oversized, full-color holiday postcard full of local deals, mailed the first week of December to about 15,000 homes across Houghton, Hancock, Calumet, Laurium, Lake Linden, Chassell and Mohawk. One business per category. Printing, postage and design included.</p>
+    <div class="cta-row"><a class="btn primary" data-msg="check" href="sms:+19062990083?&body=Hi%20there%2C%20I%27d%20like%20to%20check%20my%20category%20and%20get%20a%20free%20mockup%20for%20the%20Houghton%20County%20holiday%20postcard.%20My%20business%20is%3A%20">Check my category + free mockup</a></div>
+    <p class="reassure">Free mockup, no pressure. See your ad first and only move forward if you love it. <a href="#reserve">Ready to reserve? Pick your size</a>.</p>
+    <p class="numline">Or call or text <a href="tel:+19062990083"><strong>(906) 299-0083</strong></a></p>
   </div>
 </section>
 
 <div class="incl band"><div class="wrap"><span>&#10052; Printing, postage and design included &#10052;</span></div></div>
 
 <section class="offer" aria-label="Holiday offer">
-  <div class="gos band"><div class="wrap"><span class="flake" aria-hidden="true">&#10052;</span> Holiday 2026 offer <span class="flake" aria-hidden="true">&#10052;</span></div></div>
   <div class="band"><div class="wrap offer-main">
     <p class="anysize" style="margin-top:0;font-size:min(10vw,64px);white-space:normal;text-wrap:balance">15,000 homes for the price of 10,000</p>
     <p class="line2">Buy two areas, get the third free. Holiday 2026 card only.</p>
@@ -85,21 +94,33 @@
   </div></div>
 </section>
 
-<section class="s band" id="timing">
+<section class="s band" id="reserve">
   <div class="wrap">
-    <p class="label">Right on time</p>
-    <h2>In their mailboxes before the holidays</h2>
-    <p class="lead">The holiday card mails the first week of December, so it is in about 15,000 homes while people are planning parties, buying gifts and spending locally. Then it stays on the fridge and the counter well into the new year.</p>
-    <ol class="tl">
-      <li><b>By Nov 12</b><span>Final spots close, or sooner if they sell out.</span></li>
-      <li><b>First week of December</b><span>The card hits about 15,000 mailboxes.</span></li>
-      <li><b>All December</b><span>Holiday shopping, gift cards, parties and catering.</span></li>
-      <li><b>January and beyond</b><span>Still on the fridge when winter and new-year needs come up.</span></li>
-    </ol>
-    <div class="cols2">
-      <div><h3>Restaurants, shops and salons</h3><p>Reach people while they are choosing where to eat, shop and spend for the holidays. Coupons and gift card offers get used and kept.</p></div>
-      <div><h3>Service businesses</h3><p>People hold on to the card, so when a customer needs a roofer, mechanic, plumber or cleaner, you are the number they already have on the fridge.</p></div>
+    <p class="label">Reserve your spot</p>
+    <h2>Pick your size</h2>
+    <p class="lead">Check your category first (free mockup, no obligation), then reserve below. One business per category.</p>
+    <div class="plans" id="plans" role="group" aria-label="Payment option" hidden></div>
+    <div class="res">
+      <div class="rc"><h3>Coupon ad</h3><div class="hhbig">3&cent;<span>per household</span></div><div class="price2"><b>$500</b><s>$750</s><small>3.5" x 1.8" · 1 spot</small></div><p class="inc">Printing, postage and design included</p><a class="btn sm dark pay" data-pay="coupon" href="sms:+19062990083?&body=Hi%20there%2C%20I%27d%20like%20to%20reserve%20a%20coupon%20ad%20on%20the%20Houghton%20County%20holiday%20postcard.%20My%20business%20is%3A%20">Reserve coupon ad &middot; $500</a></div>
+      <div class="rc"><h3>Single ad</h3><div class="hhbig">5&cent;<span>per household</span></div><div class="price2"><b>$700</b><s>$1,050</s><small>3.5" x 1.8" · 1 spot</small></div><p class="inc">Printing, postage and design included</p><a class="btn sm dark pay" data-pay="single" href="sms:+19062990083?&body=Hi%20there%2C%20I%27d%20like%20to%20reserve%20a%20single%20ad%20on%20the%20Houghton%20County%20holiday%20postcard.%20My%20business%20is%3A%20">Reserve single ad &middot; $700</a></div>
+      <div class="rc"><h3>Double ad</h3><div class="hhbig">8&cent;<span>per household</span></div><div class="price2"><b>$1,200</b><s>$1,800</s><small>7.2" x 1.8" or 3.5" x 3.8" · 2 spots</small></div><p class="inc">Printing, postage and design included</p><a class="btn sm dark pay" data-pay="double" href="sms:+19062990083?&body=Hi%20there%2C%20I%27d%20like%20to%20reserve%20a%20double%20ad%20on%20the%20Houghton%20County%20holiday%20postcard.%20My%20business%20is%3A%20">Reserve double ad &middot; $1,200</a></div>
+      <div class="rc"><h3>Quadruple ad</h3><div class="hhbig">16&cent;<span>per household</span></div><div class="price2"><b>$2,400</b><s>$3,600</s><small>7.1" x 3.7" · 4 spots</small></div><p class="inc">Printing, postage and design included</p><a class="btn sm dark pay" data-pay="quad" href="sms:+19062990083?&body=Hi%20there%2C%20I%27d%20like%20to%20reserve%20a%20quadruple%20ad%20on%20the%20Houghton%20County%20holiday%20postcard.%20My%20business%20is%3A%20">Reserve quadruple ad &middot; $2,400</a></div>
     </div>
+    <p class="lead small">Every price includes printing, postage and design. Secure checkout by Stripe. Final spots through Thursday, November 12, or until they sell out.</p>
+  </div>
+</section>
+
+<section class="s band" id="why">
+  <div class="wrap">
+    <p class="label">Why it works</p>
+    <h2>Why it works</h2>
+    <ul class="why">
+      <li><b>A billboard in their mailbox that can't be missed.</b> No ad blockers, no algorithm, no scrolling past.</li>
+      <li><b>Not junk mail.</b> People keep this card for the coupons and put it on the fridge, so service businesses stay top of mind when customers need them.</li>
+      <li><b>Right on time for the holidays.</b> It lands the first week of December, while people plan parties, buy gifts and spend locally.</li>
+      <li><b>One business per category</b>, so you are not buried by competitors.</li>
+      <li><b>Affordable.</b> Postage alone costs roughly 26 cents per household, about $3,900 for 15,000 households, before printing and design. On a shared card you split it with other local businesses.</li>
+    </ul>
   </div>
 </section>
 
@@ -116,79 +137,16 @@
   </div>
 </section>
 
-<section class="s band" id="price">
-  <div class="wrap">
-    <p class="label">Pricing</p>
-    <h2>Four ad sizes, priced per household</h2>
-    <p class="lead">Every price is for the whole holiday card: about 15,000 Houghton County homes. Design, printing and postage are included, and We design your ad for free. Regular prices are crossed out. Free mockup first, no obligation.</p>
-    <p class="inc big">Every price includes printing, postage and design</p>
-    <ul class="wmylist" style="list-style:none;padding:0;margin:20px 0 0;display:grid;gap:10px;max-width:760px"><li class="wmy"><span class="wl">Coupon ad</span><span class="wh">3&cent;<small> per household</small></span><span class="wp"><b>$500</b><s>$750</s></span></li><li class="wmy"><span class="wl">Single ad</span><span class="wh">5&cent;<small> per household</small></span><span class="wp"><b>$700</b><s>$1,050</s></span></li><li class="wmy"><span class="wl">Double ad</span><span class="wh">8&cent;<small> per household</small></span><span class="wp"><b>$1,200</b><s>$1,800</s></span></li><li class="wmy"><span class="wl">Quadruple ad</span><span class="wh">16&cent;<small> per household</small></span><span class="wp"><b>$2,400</b><s>$3,600</s></span></li></ul>
-    <p class="lead" style="margin-top:18px">Example: a double ad that normally costs $1,800 for all three areas is $1,200 on this card.</p>
-  </div>
-</section>
-
-<section class="s band" id="why">
-  <div class="wrap">
-    <p class="label">Why it works</p>
-    <h2>Why local businesses use the card</h2>
-    <ul class="why">
-      <li><b>Reaches about 15,000 homes</b> across Houghton, Hancock, Calumet, Laurium, Lake Linden, Chassell and Mohawk.</li>
-      <li><b>It is basically a billboard in their mailbox that can't be missed.</b> No ad blockers, no algorithm, no scrolling past.</li>
-      <li><b>Not junk mail.</b> Most mail gets tossed unless you need that service or offer right then. People keep this card for the coupons and stick it on the fridge, so service businesses stay in front of customers for weeks and are top of mind when they need you.</li>
-      <li><b>Holiday timing.</b> It lands the first week of December, when people are actively shopping local.</li>
-      <li><b>One business per category.</b> One roofer, one dentist, one pizza place, so you are not buried by competitors.</li>
-      <li><b>Affordable.</b> Postage alone costs roughly 26 cents per household, about $3,900 for 15,000 households, before printing and design. On a shared card you split it with other local businesses.</li>
-      <li><b>Local and personal.</b> The card is run by a local owner based in the Houghton area, and it supports and promotes fellow Upper Peninsula businesses.</li>
-      <li><b>Design included.</b> We design your ad for free and you approve it before anything prints.</li>
-    </ul>
-  </div>
-</section>
-
-<section class="s band" id="reserve">
-  <div class="wrap">
-    <p class="label">Reserve your spot</p>
-    <h2>Pick your size and reserve it</h2>
-    <div class="gate"><p><b>Check your category first.</b> Each card has one business per category. Text us your business and category and we will confirm it is open and send your free mockup, usually the same day. Then pay below to lock it in. The mockup is free with no obligation.</p></div>
-    <div class="cta-row" style="margin-top:18px">
-      <a class="btn primary" data-msg="check" href="sms:+19062990083?&body=Hi%20there%2C%20I%27d%20like%20to%20check%20my%20category%20and%20get%20a%20free%20mockup%20for%20the%20Houghton%20County%20holiday%20postcard.%20My%20business%20is%3A%20">Check my category + free mockup</a>
-      <a class="btn ghost" data-msg-fb hidden href="#">Message us on Facebook</a>
-    </div>
-    <div class="res">
-      <div class="rc"><h3>Coupon ad</h3><div class="hhbig">3&cent;<span>per household</span></div><div class="price2"><b>$500</b><s>$750</s><small>3.5" x 1.8" · 1 spot</small></div><p class="inc">Printing, postage and design included</p><a class="btn sm dark pay" data-pay="coupon" href="sms:+19062990083?&body=Hi%20there%2C%20I%27d%20like%20to%20reserve%20a%20coupon%20ad%20on%20the%20Houghton%20County%20holiday%20postcard.%20My%20business%20is%3A%20">Reserve coupon ad &middot; $500</a></div>
-      <div class="rc"><h3>Single ad</h3><div class="hhbig">5&cent;<span>per household</span></div><div class="price2"><b>$700</b><s>$1,050</s><small>3.5" x 1.8" · 1 spot</small></div><p class="inc">Printing, postage and design included</p><a class="btn sm dark pay" data-pay="single" href="sms:+19062990083?&body=Hi%20there%2C%20I%27d%20like%20to%20reserve%20a%20single%20ad%20on%20the%20Houghton%20County%20holiday%20postcard.%20My%20business%20is%3A%20">Reserve single ad &middot; $700</a></div>
-      <div class="rc"><h3>Double ad</h3><div class="hhbig">8&cent;<span>per household</span></div><div class="price2"><b>$1,200</b><s>$1,800</s><small>7.2" x 1.8" or 3.5" x 3.8" · 2 spots</small></div><p class="inc">Printing, postage and design included</p><a class="btn sm dark pay" data-pay="double" href="sms:+19062990083?&body=Hi%20there%2C%20I%27d%20like%20to%20reserve%20a%20double%20ad%20on%20the%20Houghton%20County%20holiday%20postcard.%20My%20business%20is%3A%20">Reserve double ad &middot; $1,200</a></div>
-      <div class="rc"><h3>Quadruple ad</h3><div class="hhbig">16&cent;<span>per household</span></div><div class="price2"><b>$2,400</b><s>$3,600</s><small>7.1" x 3.7" · 4 spots</small></div><p class="inc">Printing, postage and design included</p><a class="btn sm dark pay" data-pay="quad" href="sms:+19062990083?&body=Hi%20there%2C%20I%27d%20like%20to%20reserve%20a%20quadruple%20ad%20on%20the%20Houghton%20County%20holiday%20postcard.%20My%20business%20is%3A%20">Reserve quadruple ad &middot; $2,400</a></div>
-    </div>
-    <p class="lead" style="margin-top:18px">Every price includes printing, postage and design. Secure checkout by Stripe. Final spots through Thursday, November 12, or until they sell out.</p>
-  </div>
-</section>
-
-<section class="s band" id="how">
-  <div class="wrap">
-    <p class="label">How it works</p>
-    <h2>Three steps, and we do the design</h2>
-    <ol class="steps">
-      <li><b>Check your category</b><span>Text us your business and category. We confirm it is open and design your ad for free, with no obligation.</span></li>
-      <li><b>Approve and reserve</b><span>Ask for changes until you like it. Nothing prints without your OK. Reserve with secure checkout.</span></li>
-      <li><b>It hits mailboxes</b><span>The holiday card mails the first week of December, right for holiday shopping.</span></li>
-    </ol>
-  </div>
-</section>
-
 <section class="s band" id="faq">
   <div class="wrap">
     <p class="label">Questions</p>
     <h2>Good to know</h2>
     <div class="faq">
+      <details><summary>When is it due?</summary><p>Spots are open through Thursday, November 12, or until they sell out. Check your category and see your free mockup first, then reserve to lock your spot.</p></details>
+      <details><summary>What sizes are there?</summary><p>Coupon and single ads are 3.5" x 1.8" (one spot). A double takes two spots (7.2" x 1.8" wide or 3.5" x 3.8" tall). A quadruple takes four spots (7.1" x 3.7").</p></details>
+      <details><summary>Who designs the ad?</summary><p>We do, for free, using your logo and offer. You approve it before anything prints.</p></details>
       <details open><summary>Is my spot available?</summary><p>Each card has one business per category, so check before you pay. Text us your business and category and we will tell you right away. <a data-msg="check" href="sms:+19062990083?&body=Hi%20there%2C%20I%27d%20like%20to%20check%20my%20category%20and%20get%20a%20free%20mockup%20for%20the%20Houghton%20County%20holiday%20postcard.%20My%20business%20is%3A%20"><b>Check my spot and request a free mockup</b></a></p></details>
-      <details><summary>When does it mail?</summary><p>The holiday 2026 card mails the first week of December to about 15,000 Houghton County homes.</p></details>
-      <details><summary>What is the deadline?</summary><p>Spots are open through Thursday, November 12, or until they sell out, whichever comes first. Each card has a limited number of spots and one business per category.</p></details>
-      <details><summary>What sizes are available?</summary><p>Coupon and single ads are 3.5" x 1.8" (one spot). A double ad takes two spots and is either 7.2" x 1.8" wide or 3.5" x 3.8" tall. A quadruple ad takes four spots and is 7.1" x 3.7".</p></details>
-      <details><summary>Do you design the ad?</summary><p>Yes, for free. We use your logo, your offer and your info, and you approve it before anything prints.</p></details>
-      <details><summary>Can I advertise in just one area?</summary><p>The card is one mailing to all of Houghton County, about 15,000 homes. On the holiday 2026 card you get all 15,000 homes for the price of 10,000.</p></details>
-      <details><summary>What is the free mockup?</summary><p>We design your ad so you can see exactly how it will look on the card. You only move forward if you like it.</p></details>
-      <details><summary>Can I be on more than one card?</summary><p>Yes. You can also be on the Marquette card. Text us and we will plan it together.</p></details>
-    </div>
+                                              </div>
   </div>
 </section>
 
@@ -205,16 +163,18 @@
 </section>
 <footer class="band"><div class="wrap sutwrap"><a class="sutlogo" href="../" aria-label="UP Postcard, presented by Support the UP"><span class="u"><span class="up">UP</span><span class="pc">Postcard</span></span><span class="bar"></span><span class="by"><small>Presented by</small><b>Support the <i>UP</i></b></span></a><p>Holiday 2026 &middot; Call or text (906) 299-0083</p></div></footer>
 
-<nav class="sticky" aria-label="Contact us">
-  <a class="t" data-msg="check" href="sms:+19062990083?&body=Hi%20there%2C%20I%27d%20like%20to%20check%20my%20category%20and%20get%20a%20free%20mockup%20for%20the%20Houghton%20County%20holiday%20postcard.%20My%20business%20is%3A%20">Check my category</a>
-  <a class="c" href="#reserve">Reserve</a>
-</nav>
+<nav class="sticky" id="stk" aria-label="Contact us"><a class="t one" data-msg="check" href="sms:+19062990083?&body=Hi%20there%2C%20I%27d%20like%20to%20check%20my%20category%20and%20get%20a%20free%20mockup%20for%20the%20Houghton%20County%20holiday%20postcard.%20My%20business%20is%3A%20">Check my category + free mockup</a></nav>
 
 <div class="lb" id="lb" role="dialog" aria-label="Expanded image"><button type="button" id="lbx">Close</button><img alt="" id="lbi"></div>
 
 <script>
 /* ===== EDIT HERE: paste your Stripe payment links between the quotes. Empty = the button sends a text message instead. ===== */
 var STRIPE = { coupon: "", single: "", double: "", quad: "" };
+/* Optional payment plans. For each size fill text (what the button shows, like "4 payments of $135") and link. Plans left empty stay hidden. */
+var PLANS = {
+  quarterly: { coupon: {text:"", link:""}, single: {text:"", link:""}, double: {text:"", link:""}, quad: {text:"", link:""} },
+  monthly:   { coupon: {text:"", link:""}, single: {text:"", link:""}, double: {text:"", link:""}, quad: {text:"", link:""} }
+};
 /* Optional: your Messenger link, like https://m.me/YourPageName. Empty = hidden. */
 var MESSENGER = "";
 (function () {
@@ -245,6 +205,35 @@ var MESSENGER = "";
   lbx.addEventListener('click', close);
   lb.addEventListener('click', function (e) { if (e.target === lb) close(); });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
+})();
+</script>
+<script>
+(function () {
+  var names = { full: 'Pay in full', quarterly: 'Quarterly', monthly: 'Monthly' };
+  var box = document.getElementById('plans'), cards = document.querySelectorAll('[data-pay]');
+  var avail = ['full'];
+  ['quarterly', 'monthly'].forEach(function (k) { var P = PLANS[k], ok = false; for (var s in P) if (P[s].text) ok = true; if (ok) avail.push(k); });
+  if (box && avail.length > 1) {
+    box.hidden = false;
+    avail.forEach(function (k, i) { var b = document.createElement('button'); b.type = 'button'; b.textContent = names[k]; b.setAttribute('data-plan', k); b.setAttribute('aria-pressed', i === 0 ? 'true' : 'false'); box.appendChild(b); });
+    for (var i = 0; i < cards.length; i++) cards[i].setAttribute('data-full', cards[i].textContent);
+    box.addEventListener('click', function (e) {
+      var k = e.target.getAttribute && e.target.getAttribute('data-plan'); if (!k) return;
+      var bs = box.querySelectorAll('button'); for (var j = 0; j < bs.length; j++) bs[j].setAttribute('aria-pressed', bs[j] === e.target ? 'true' : 'false');
+      for (var c = 0; c < cards.length; c++) {
+        var a = cards[c], s = a.getAttribute('data-pay');
+        if (k === 'full') { a.textContent = a.getAttribute('data-full'); var u = STRIPE[s]; if (u) a.href = u; }
+        else { var d = PLANS[k][s]; a.textContent = 'Reserve ' + (d.text ? '\u00b7 ' + d.text : ''); if (d.link) a.href = d.link; }
+      }
+    });
+  }
+  var stk = document.getElementById('stk'), hero = document.querySelector('.hero'), res = document.getElementById('reserve');
+  if (stk && 'IntersectionObserver' in window) {
+    var heroOut = false, resIn = false;
+    function upd() { stk.classList.toggle('show', heroOut && !resIn); }
+    new IntersectionObserver(function (es) { heroOut = !es[0].isIntersecting; upd(); }).observe(hero);
+    new IntersectionObserver(function (es) { resIn = es[0].isIntersecting; upd(); }, { threshold: 0.15 }).observe(res);
+  }
 })();
 </script>
 </body>
