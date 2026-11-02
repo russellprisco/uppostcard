@@ -74,6 +74,14 @@ nav.sticky .one{flex:1}
 .herocard figcaption{color:var(--hero-muted);font-size:14px;margin-top:12px;text-align:center}
 @media (max-width:860px){.herogrid{grid-template-columns:1fr;gap:26px}.herocard{max-width:300px;margin:0 auto}}
 .herotxt h1{font-size:clamp(34px,5vw,60px)}
+.diy{background:var(--hero-bg);color:#fff}.diy .label{color:var(--hero-muted)}.diy h2{color:#fff}.diy .lead{color:#cfd9e6}
+.cmp{margin-top:24px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.cm{border:2px solid rgba(255,255,255,.25);padding:20px;display:flex;flex-direction:column;gap:8px}
+.cm .n{font-family:var(--font-display);font-weight:700;font-size:clamp(34px,6vw,52px);line-height:1;color:#ffd23f}
+.cm .d{font-size:16px;color:#cfd9e6}
+.cm.win{background:#1e7a4c;border-color:#1e7a4c}.cm.win .n{color:#fff}.cm.win .d{color:#fff}
+.cmpnote{margin-top:18px}
+@media (max-width:760px){.cmp{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -108,6 +116,20 @@ nav.sticky .one{flex:1}
   </div></div>
 </section>
 
+<section class="s band diy" id="diy">
+  <div class="wrap">
+    <p class="label">The real cost of mailing it yourself</p>
+    <h2>Mailing 15,000 homes on your own costs $6,000 to $10,000 or more</h2>
+    <p class="lead">Postage alone is about 26 cents per household. For 15,000 homes, that is roughly $3,900 before you pay for a single printed card or a designer. On this card you reach the same 15,000 mailboxes for as little as 3 cents per household.</p>
+    <div class="cmp">
+      <div class="cm"><span class="n">$3,900</span><span class="d">Postage alone for 15,000 homes, at about 26 cents each</span></div>
+      <div class="cm"><span class="n">$6,000&ndash;$10,000+</span><span class="d">Typical total on your own, with postage, printing and design</span></div>
+      <div class="cm win"><span class="n">From $500</span><span class="d">Your ad on this card, as little as 3 cents per household, with printing, postage and design included</span></div>
+    </div>
+    <p class="lead cmpnote">Same mailboxes, a fraction of the price. The cost is shared with other local businesses, and you still get your own spot.</p>
+  </div>
+</section>
+
 <section class="s band" id="reserve">
   <div class="wrap">
     <p class="label">Reserve your spot</p>
@@ -133,7 +155,6 @@ nav.sticky .one{flex:1}
       <li><b>Not junk mail.</b> People keep this card for the coupons and put it on the fridge, so service businesses stay top of mind when customers need them.</li>
       <li><b>Right on time for the holidays.</b> It lands the first week of December, while people plan parties, buy gifts and spend locally.</li>
       <li><b>One business per category</b>, so you are not buried by competitors.</li>
-      <li><b>Affordable.</b> Postage alone costs roughly 26 cents per household, about $3,900 for 15,000 households, before printing and design. On a shared card you split it with other local businesses.</li>
     </ul>
   </div>
 </section>
