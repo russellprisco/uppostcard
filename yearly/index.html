@@ -19,6 +19,7 @@
 .plans{margin-top:20px;display:flex;flex-wrap:wrap;gap:0;border:2px solid var(--ink);border-radius:999px;overflow:hidden;width:fit-content;max-width:100%}
 .plans button{border:0;background:transparent;color:var(--ink);font:700 17px var(--font-body);padding:12px 20px;cursor:pointer}
 .plans button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.phead{margin-top:16px;padding:14px 18px;background:#1e7a4c;color:#fff;font-family:var(--font-display);font-weight:700;font-size:clamp(22px,4.4vw,30px);line-height:1.12;max-width:760px}
 .pnote{margin-top:14px;max-width:760px;color:var(--muted)}
 .res{margin-top:22px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
 .rc{background:var(--surface);border:1px solid var(--line);padding:18px;display:flex;flex-direction:column;gap:6px;border-top:5px solid #c1272d}.rc:nth-child(even){border-top-color:#1e7a4c}
@@ -50,7 +51,7 @@
 .cg .r{display:grid;grid-template-columns:90px repeat(4,minmax(0,1fr));gap:6px}
 .cg .c{padding:10px;display:flex;flex-direction:column;gap:2px;border-radius:0}
 .cg .c b{font-family:var(--font-display);font-size:24px;line-height:1.05}
-.cg .c span{font-size:13px;color:var(--muted)}.cg .c em{font-style:normal;font-weight:700;font-size:14px;color:#1e7a4c}
+.cg .c span{font-size:13px;color:var(--muted)}.cg .c strong{font-size:14px;margin-top:4px;color:#10202c}.cg .c em{font-style:normal;font-weight:700;font-size:14px;color:#1e7a4c}
 .cg .s{font-weight:700;justify-content:center;text-transform:uppercase}
 .cg .reg{background:#e6eaf0;color:#3b4654}.cg .reg b{text-decoration:line-through;text-decoration-thickness:2px}
 .cg .q{background:#d7e9f7}.cg .m{background:#fff0c4}.cg .f{background:#d3efdf;box-shadow:inset 0 0 0 2px #1e7a4c}
@@ -59,7 +60,7 @@
 .cg .h .reg,.cg .h .q,.cg .h .m,.cg .h .f{color:#10202c}
 .cg .h .s{background:none}
 .how .hol{background:var(--bg);border-left:6px solid #1e7a4c;padding:10px 14px}
-@media (prefers-color-scheme:dark){.cg .reg{background:#2a323d;color:#c9d2dd}.cg .q{background:#17384f;color:#eaf4fb}.cg .m{background:#4a3c10;color:#fff3cf}.cg .f{background:#14412b;color:#e3f8ec}.cg .c span{color:inherit;opacity:.8}.cg .c em{color:#7ee0aa}.cg .h .reg,.cg .h .q,.cg .h .m,.cg .h .f{color:inherit}}
+@media (prefers-color-scheme:dark){.cg .c strong{color:inherit}.cg .reg{background:#2a323d;color:#c9d2dd}.cg .q{background:#17384f;color:#eaf4fb}.cg .m{background:#4a3c10;color:#fff3cf}.cg .f{background:#14412b;color:#e3f8ec}.cg .c span{color:inherit;opacity:.8}.cg .c em{color:#7ee0aa}.cg .h .reg,.cg .h .q,.cg .h .m,.cg .h .f{color:inherit}}
 @media (max-width:640px){.cg .h{display:none}.cg .r{grid-template-columns:1fr 1fr}.cg .s{grid-column:1/-1;background:var(--ink);color:var(--bg);padding:8px 10px;justify-content:flex-start}.cg .c[data-l]::before{content:attr(data-l);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.04em}}
 .hero{overflow:hidden}
 </style>
@@ -79,12 +80,13 @@
   <p class="label">Lock in your category</p>
   <h2>Choose your plan, then your size</h2>
   <div class="plans" id="plans" role="group" aria-label="Payment plan"></div>
+  <div class="phead" id="phead"></div>
   <p class="pnote" id="pnote"></p>
   <div class="res" id="res"></div>
   <p class="terms" id="terms"></p>
   <details class="how"><summary>How are these savings calculated?</summary>
-    <p>Starting in 2027, the buy-two-get-one-free pricing goes away and regular prices apply to everyone else. These totals are for all four 2027 cards, compared to the regular 2027 price.</p>
-    <div class="cg"><div class="r h"><div class="c s">Ad size</div><div class="c reg">Regular 2027 price</div><div class="c q">Quarterly<span>4 payments</span></div><div class="c m">Monthly<span>12 payments</span></div><div class="c f">Pay in full<span>Best value</span></div></div><div class="r"><div class="c s">Coupon</div><div class="c reg" data-l="Regular 2027 price"><b>$3,000</b><span>4 cards</span></div><div class="c q" data-l="Quarterly"><b>$2,000</b><span>4 &times; $500</span><em>Save $1,000</em></div><div class="c m" data-l="Monthly"><b>$2,100</b><span>12 &times; $175</span><em>Save $900</em></div><div class="c f" data-l="Pay in full"><b>$1,800</b><span>1 payment</span><em>Save $1,200</em></div></div><div class="r"><div class="c s">Single</div><div class="c reg" data-l="Regular 2027 price"><b>$4,200</b><span>4 cards</span></div><div class="c q" data-l="Quarterly"><b>$2,800</b><span>4 &times; $700</span><em>Save $1,400</em></div><div class="c m" data-l="Monthly"><b>$3,000</b><span>12 &times; $250</span><em>Save $1,200</em></div><div class="c f" data-l="Pay in full"><b>$2,520</b><span>1 payment</span><em>Save $1,680</em></div></div><div class="r"><div class="c s">Double</div><div class="c reg" data-l="Regular 2027 price"><b>$7,200</b><span>4 cards</span></div><div class="c q" data-l="Quarterly"><b>$4,800</b><span>4 &times; $1,200</span><em>Save $2,400</em></div><div class="c m" data-l="Monthly"><b>$5,100</b><span>12 &times; $425</span><em>Save $2,100</em></div><div class="c f" data-l="Pay in full"><b>$4,320</b><span>1 payment</span><em>Save $2,880</em></div></div><div class="r"><div class="c s">4-spot</div><div class="c reg" data-l="Regular 2027 price"><b>$14,400</b><span>4 cards</span></div><div class="c q" data-l="Quarterly"><b>$9,600</b><span>4 &times; $2,400</span><em>Save $4,800</em></div><div class="c m na" data-l="Monthly"><b>N/A</b><span>Not offered monthly</span></div><div class="c f" data-l="Pay in full"><b>$8,640</b><span>1 payment</span><em>Save $5,760</em></div></div></div>
+    <p>Starting in 2027, the buy-two-get-one-free pricing goes away and regular prices apply to everyone else. The big number in each box is your total for all four 2027 cards. Savings are compared to the regular 2027 price, plus half off your Holiday Card.</p>
+    <div class="cg"><div class="r h"><div class="c s">Ad size</div><div class="c reg">Regular 2027 price</div><div class="c q">Quarterly<span>4 payments</span></div><div class="c m">Monthly<span>12 payments</span></div><div class="c f">Pay in full<span>Best value</span></div></div><div class="r"><div class="c s">Coupon</div><div class="c reg" data-l="Regular 2027 price"><b>$3,000</b><span>4 cards</span></div><div class="c q" data-l="Quarterly"><b>$2,000</b><span>4 &times; $500</span><em>Save $1,000 on 2027</em><em>Save $250 on Holiday Card</em><strong>Total savings: $1,250</strong></div><div class="c m" data-l="Monthly"><b>$2,100</b><span>12 &times; $175</span><em>Save $900 on 2027</em><em>Save $250 on Holiday Card</em><strong>Total savings: $1,150</strong></div><div class="c f" data-l="Pay in full"><b>$1,800</b><span>1 payment</span><em>Save $1,200 on 2027</em><em>Save $250 on Holiday Card</em><strong>Total savings: $1,450</strong></div></div><div class="r"><div class="c s">Single</div><div class="c reg" data-l="Regular 2027 price"><b>$4,200</b><span>4 cards</span></div><div class="c q" data-l="Quarterly"><b>$2,800</b><span>4 &times; $700</span><em>Save $1,400 on 2027</em><em>Save $350 on Holiday Card</em><strong>Total savings: $1,750</strong></div><div class="c m" data-l="Monthly"><b>$3,000</b><span>12 &times; $250</span><em>Save $1,200 on 2027</em><em>Save $350 on Holiday Card</em><strong>Total savings: $1,550</strong></div><div class="c f" data-l="Pay in full"><b>$2,520</b><span>1 payment</span><em>Save $1,680 on 2027</em><em>Save $350 on Holiday Card</em><strong>Total savings: $2,030</strong></div></div><div class="r"><div class="c s">Double</div><div class="c reg" data-l="Regular 2027 price"><b>$7,200</b><span>4 cards</span></div><div class="c q" data-l="Quarterly"><b>$4,800</b><span>4 &times; $1,200</span><em>Save $2,400 on 2027</em><em>Save $600 on Holiday Card</em><strong>Total savings: $3,000</strong></div><div class="c m" data-l="Monthly"><b>$5,100</b><span>12 &times; $425</span><em>Save $2,100 on 2027</em><em>Save $600 on Holiday Card</em><strong>Total savings: $2,700</strong></div><div class="c f" data-l="Pay in full"><b>$4,320</b><span>1 payment</span><em>Save $2,880 on 2027</em><em>Save $600 on Holiday Card</em><strong>Total savings: $3,480</strong></div></div><div class="r"><div class="c s">4-spot</div><div class="c reg" data-l="Regular 2027 price"><b>$14,400</b><span>4 cards</span></div><div class="c q" data-l="Quarterly"><b>$9,600</b><span>4 &times; $2,400</span><em>Save $4,800 on 2027</em><em>Save $1,200 on Holiday Card</em><strong>Total savings: $6,000</strong></div><div class="c m na" data-l="Monthly"><b>N/A</b><span>Not offered monthly</span></div><div class="c f" data-l="Pay in full"><b>$8,640</b><span>1 payment</span><em>Save $5,760 on 2027</em><em>Save $1,200 on Holiday Card</em><strong>Total savings: $6,960</strong></div></div></div>
     <p class="hol"><b>Your half-off Holiday Card also saves you:</b> $250 on a coupon, $350 on a single, $600 on a double and $1,200 on a 4-spot. That is half of the current holiday price, and it applies to every plan.</p>
     <p>Monthly costs a little more than quarterly because it is spread over 12 payments.</p></details>
   
@@ -122,9 +124,9 @@ var SIZES = [
   { k: "quad", n: "4-spot ad", today: "$1,200", full: "$9,840", q: "$2,400", m: "", sv: { full: "$5,760", quarterly: "$4,800", monthly: "" }, cph: { full: "14.4", quarterly: "16", monthly: "" }, tot: { full: "$9,840", quarterly: "$10,800", monthly: "" } }
 ];
 var PLAN = {
-  full: { label: "Pay in full", note: "Best value. Save an extra 10% on your 2027 cards and get first pick of your spot. One payment today covers your half-off Holiday Card and all four 2027 cards.", terms: "By completing your order, you agree to a 12-month commitment for all four 2027 cards. Payments are non-refundable." },
-  quarterly: { label: "Quarterly", note: "Pay half of your Holiday Card ad today. Your special rate is billed before each 2027 card, 4 payments starting in " + START + ".", terms: "By completing your order, you agree to a 12-month commitment for all four 2027 cards." },
-  monthly: { label: "Monthly", note: "Pay half of your Holiday Card ad today, then 12 monthly payments starting in " + START + ". Monthly is slightly higher because it is spread over 12 payments. Coupon, single and double only.", terms: "By completing your order, you agree to a 12-month commitment for all four 2027 cards." }
+  full: { label: "Pay in full", head: "One payment covers it all: your Holiday Card at half off and all four 2027 cards at 10% off.", note: "Best value. Save an extra 10% on your 2027 cards and get first pick of your spot. One payment today covers your half-off Holiday Card and all four 2027 cards.", terms: "By completing your order, you agree to a 12-month commitment for all four 2027 cards. Payments are non-refundable." },
+  quarterly: { label: "Quarterly", head: "Pay just half of your Holiday Card today. I cover the other half, and your payments don't start until " + START + ".", note: "Pay half of your Holiday Card ad today. Your special rate is billed before each 2027 card, 4 payments starting in " + START + ".", terms: "By completing your order, you agree to a 12-month commitment for all four 2027 cards." },
+  monthly: { label: "Monthly", head: "Pay just half of your Holiday Card today. I cover the other half, and your monthly payments don't start until " + START + ".", note: "Pay half of your Holiday Card ad today, then 12 monthly payments starting in " + START + ". Monthly is slightly higher because it is spread over 12 payments. Coupon, single and double only.", terms: "By completing your order, you agree to a 12-month commitment for all four 2027 cards." }
 };
 var cur = "full";
 function num(x) { return parseInt(String(x).replace(/[$,]/g, ''), 10) || 0; }
@@ -133,6 +135,7 @@ function smsFor(s, p) { return 'sms:+19062990083?&body=' + encodeURIComponent("H
 function render() {
   var res = document.getElementById('res'); res.innerHTML = '';
   document.getElementById('pnote').textContent = PLAN[cur].note;
+  document.getElementById('phead').textContent = PLAN[cur].head;
   document.getElementById('terms').textContent = PLAN[cur].terms;
   SIZES.forEach(function (s) {
     var d = document.createElement('div'); d.className = 'rc';
