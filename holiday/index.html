@@ -60,6 +60,15 @@
 nav.sticky{transition:transform .2s;transform:translateY(110%)}nav.sticky:not(.show){visibility:hidden}nav.sticky.show{transform:none}
 nav.sticky .one{flex:1}
 @media (min-width:861px){nav.sticky{display:none}}
+
+.herogrid{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:44px;align-items:center}
+.herotxt{min-width:0}
+.herocard{margin:0}
+.herocard button{display:block;width:100%;padding:0;border:0;background:none;cursor:zoom-in}
+.herocard img{width:100%;height:auto;display:block;box-shadow:0 14px 40px rgba(0,0,0,.5);border-radius:0;transform:rotate(1.5deg)}
+.herocard figcaption{color:var(--hero-muted);font-size:14px;margin-top:12px;text-align:center}
+@media (max-width:860px){.herogrid{grid-template-columns:1fr;gap:26px}.herocard{max-width:300px;margin:0 auto}}
+.herotxt h1{font-size:clamp(34px,5vw,60px)}
 </style>
 </head>
 <body>
@@ -74,14 +83,14 @@ nav.sticky .one{flex:1}
 </header>
 
 <section class="hero band">
-  <div class="wrap">
+  <div class="wrap herogrid"><div class="herotxt">
     <p class="label" style="color: var(--hero-muted)">Holiday 2026 postcard &middot; Houghton County, Michigan</p>
     <h1 style="margin-top:10px">Get Your Business in Front of <em>15,000</em> Local Households This Holiday Season<span class="h1b">For as little as 3 cents per household</span></h1>
     <p class="sub">One oversized, full-color holiday postcard full of local deals, mailed the first week of December to about 15,000 homes across Houghton, Hancock, Calumet, Laurium, Lake Linden, Chassell and Mohawk. One business per category. Printing, postage and design included.</p>
     <div class="cta-row"><a class="btn primary" data-msg="check" href="sms:+19062990083?&body=Hi%20there%2C%20I%27d%20like%20to%20check%20my%20category%20and%20get%20a%20free%20mockup%20for%20the%20Houghton%20County%20holiday%20postcard.%20My%20business%20is%3A%20">Check my category + free mockup</a></div>
     <p class="reassure">Free mockup, no pressure. See your ad first and only move forward if you love it. <a href="#reserve">Ready to reserve? Pick your size</a>.</p>
     <p class="numline">Or call or text <a href="tel:+19062990083"><strong>(906) 299-0083</strong></a></p>
-  </div>
+  </div><figure class="herocard"><button type="button" data-expand aria-label="Open last year's holiday card full size"><img src="../img/past/holiday-front.webp" alt="Last year's UP Postcard holiday card, full of local business ads" width="1500" height="1909"></button><figcaption>Last year's holiday card. Tap to enlarge.</figcaption></figure></div>
 </section>
 
 <div class="incl band"><div class="wrap"><span>&#10052; Printing, postage and design included &#10052;</span></div></div>

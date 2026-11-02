@@ -30,18 +30,27 @@
 .rc .btn[aria-disabled="true"]{opacity:.45;pointer-events:none}
 .terms{margin-top:18px;font-size:14px;color:var(--muted);max-width:760px}
 @media (max-width:900px){.res{grid-template-columns:repeat(2,minmax(0,1fr))}}@media (max-width:520px){.res{grid-template-columns:1fr}.plans button{flex:1;padding:12px 8px;font-size:15px}}
+
+.herogrid{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:44px;align-items:center}
+.herotxt{min-width:0}
+.herocard{margin:0}
+.herocard button{display:block;width:100%;padding:0;border:0;background:none;cursor:zoom-in}
+.herocard img{width:100%;height:auto;display:block;box-shadow:0 14px 40px rgba(0,0,0,.5);border-radius:0;transform:rotate(1.5deg)}
+.herocard figcaption{color:var(--hero-muted);font-size:14px;margin-top:12px;text-align:center}
+@media (max-width:860px){.herogrid{grid-template-columns:1fr;gap:26px}.herocard{max-width:300px;margin:0 auto}}
+.herotxt h1{font-size:clamp(34px,5vw,60px)}
 </style>
 </head>
 <body>
 <div class="deadline band" id="dl"><div class="wrap"><span class="dl-label">Extended: half-off Holiday Card offer through Thursday, November 12, or until the spots are taken</span></div></div>
 <header class="topbar band"><div class="wrap"><a class="brand" href="../" style="background:none;color:inherit;padding:0;font-size:22px">UP Postcard</a><a href="sms:+19062990083">Text Russell: (906) 299-0083</a></div></header>
 
-<section class="hero band"><div class="wrap">
+<section class="hero band"><div class="wrap herogrid"><div class="herotxt">
   <p class="label" style="color: var(--hero-muted)">For current advertisers</p>
   <h1 style="margin-top:10px">Your Half-Off Holiday Card Offer Is Extended<span class="h1b">Now through Thursday, November 12, or until the spots are taken</span></h1>
-  <p class="sub">I know I said the half-off Holiday Card offer ended November 1. There is still room on the holiday card and the print schedule allows a few more days, so I am extending it one last time. When you lock in your spot for 2027, I cover half of your Holiday Card ad, and you keep your special rate all year.</p>
+  <p class="sub">There is still room on the holiday card, so I have decided to extend the half-off offer through Thursday, November 12, or until the spots are taken. When you lock in your spot for 2027, I cover half of your Holiday Card ad, and you keep your special rate all year.</p>
   <div class="cta-row"><a class="btn primary" href="#plans">Pick my plan</a></div>
-</div></section>
+</div><figure class="herocard"><button type="button" data-expand aria-label="Open last year's holiday card full size"><img src="../img/past/holiday-front.webp" alt="Last year's UP Postcard holiday card, full of local business ads" width="1500" height="1909"></button><figcaption>Last year's holiday card. Tap to enlarge.</figcaption></figure></div></section>
 
 <section class="s band" id="pick"><div class="wrap">
   <p class="label">Lock in your category</p>
@@ -110,6 +119,20 @@ function render() {
 var box = document.getElementById('plans');
 ['full', 'quarterly', 'monthly'].forEach(function (k) { var b = document.createElement('button'); b.type = 'button'; b.setAttribute('data-plan', k); b.textContent = PLAN[k].label; b.addEventListener('click', function () { cur = k; render(); }); box.appendChild(b); });
 render();
+</script>
+<div class="lb" id="lb" role="dialog" aria-label="Expanded image"><button type="button" id="lbx">Close</button><img alt="" id="lbi"></div>
+<script>
+(function () {
+  var lb = document.getElementById('lb'), lbi = document.getElementById('lbi'), lbx = document.getElementById('lbx');
+  var fr = document.querySelectorAll('[data-expand]');
+  for (var i = 0; i < fr.length; i++) (function (f) {
+    f.addEventListener('click', function () { var im = f.querySelector('img'); if (!im) return; lbi.src = im.currentSrc || im.src; lb.classList.add('on'); lbx.focus(); });
+  })(fr[i]);
+  function close() { lb.classList.remove('on'); lbi.removeAttribute('src'); }
+  lbx.addEventListener('click', close);
+  lb.addEventListener('click', function (e) { if (e.target === lb) close(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
+})();
 </script>
 </body>
 </html>
