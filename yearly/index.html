@@ -28,6 +28,7 @@
 .rc .today{font-size:15px;font-weight:700}
 .rc .btn{margin-top:auto;justify-content:center;text-align:center}
 .rc .btn[aria-disabled="true"]{opacity:.45;pointer-events:none}
+.save{font-weight:700;color:#1e7a4c}.cph{font-weight:700}.tot{font-size:14px;color:var(--muted)}@media (prefers-color-scheme:dark){.save{color:#58c58d}}
 .terms{margin-top:18px;font-size:14px;color:var(--muted);max-width:760px}
 @media (max-width:900px){.res{grid-template-columns:repeat(2,minmax(0,1fr))}}@media (max-width:520px){.res{grid-template-columns:1fr}.plans button{flex:1;padding:12px 8px;font-size:15px}}
 
@@ -92,13 +93,13 @@ var LINKS = {
 };
 var START = "January"; /* when 2027 payments begin */
 var SIZES = [
-  { k: "coupon", n: "Coupon ad", today: "$250", full: "$2,050", q: "$500", m: "$175" },
-  { k: "single", n: "Single ad", today: "$350", full: "$2,870", q: "$700", m: "$250" },
-  { k: "double", n: "Double ad", today: "$600", full: "$4,920", q: "$1,200", m: "$425" },
-  { k: "quad", n: "4-spot ad", today: "$1,200", full: "$9,840", q: "$2,400", m: "" }
+  { k: "coupon", n: "Coupon ad", today: "$250", full: "$2,050", q: "$500", m: "$175", sv: { full: "$1,200", quarterly: "$1,000", monthly: "$900" }, cph: { full: "3", quarterly: "3.3", monthly: "3.5" }, tot: { full: "$2,050", quarterly: "$2,250", monthly: "$2,350" } },
+  { k: "single", n: "Single ad", today: "$350", full: "$2,870", q: "$700", m: "$250", sv: { full: "$1,680", quarterly: "$1,400", monthly: "$1,200" }, cph: { full: "4.2", quarterly: "4.7", monthly: "5" }, tot: { full: "$2,870", quarterly: "$3,150", monthly: "$3,350" } },
+  { k: "double", n: "Double ad", today: "$600", full: "$4,920", q: "$1,200", m: "$425", sv: { full: "$2,880", quarterly: "$2,400", monthly: "$2,100" }, cph: { full: "7.2", quarterly: "8", monthly: "8.5" }, tot: { full: "$4,920", quarterly: "$5,400", monthly: "$5,700" } },
+  { k: "quad", n: "4-spot ad", today: "$1,200", full: "$9,840", q: "$2,400", m: "", sv: { full: "$5,760", quarterly: "$4,800", monthly: "" }, cph: { full: "14.4", quarterly: "16", monthly: "" }, tot: { full: "$9,840", quarterly: "$10,800", monthly: "" } }
 ];
 var PLAN = {
-  full: { label: "Pay in full", note: "Save an extra 10% on your 2027 cards and get first pick of your spot. One payment today covers your half-off Holiday Card and all four 2027 cards.", terms: "By completing your order, you agree to a 12-month commitment for all four 2027 cards. Payments are non-refundable." },
+  full: { label: "Pay in full", note: "Best value. Save an extra 10% on your 2027 cards and get first pick of your spot. One payment today covers your half-off Holiday Card and all four 2027 cards.", terms: "By completing your order, you agree to a 12-month commitment for all four 2027 cards. Payments are non-refundable." },
   quarterly: { label: "Quarterly", note: "Pay half of your Holiday Card ad today. Your special rate is billed before each 2027 card, 4 payments starting in " + START + ".", terms: "By completing your order, you agree to a 12-month commitment for all four 2027 cards." },
   monthly: { label: "Monthly", note: "Pay half of your Holiday Card ad today, then 12 monthly payments starting in " + START + ". Monthly is slightly higher because it is spread over 12 payments. Coupon, single and double only.", terms: "By completing your order, you agree to a 12-month commitment for all four 2027 cards." }
 };
@@ -115,7 +116,7 @@ function render() {
     else if (cur === 'quarterly') { big = s.q; sub = 'per card, 4 payments starting in ' + START; label = 'Start quarterly \u00b7 ' + s.today + ' today'; }
     else { avail = !!s.m; big = s.m ? s.m : 'N/A'; sub = s.m ? 'per month, 12 payments starting in ' + START : 'Not offered monthly. Choose quarterly or pay in full.'; label = avail ? 'Start monthly \u00b7 ' + s.today + ' today' : 'Not available'; }
     var link = (LINKS[cur] && LINKS[cur][s.k]) || '';
-    d.innerHTML = '<h3>' + s.n + '</h3><div class="big">' + big + '</div><div class="sub2">' + sub + '</div>' + (cur === 'full' ? '' : '<div class="today">Today: ' + s.today + ' (half-off Holiday Card)</div>') + '<a class="btn sm dark" ' + (avail ? '' : 'aria-disabled="true" ') + 'href="' + (link || smsFor(s, cur)) + '"' + (link ? ' target="_blank" rel="noopener"' : '') + '>' + label + '</a>';
+    d.innerHTML = '<h3>' + s.n + '</h3><div class="big">' + big + '</div><div class="sub2">' + sub + '</div>' + (avail ? '<div class="cph">' + s.cph[cur] + '\u00a2 per household, per card</div><div class="save">Save ' + s.sv[cur] + ' on your 2027 cards vs. regular price</div>' : '') + (cur === 'full' ? '' : '<div class="today">Today: ' + s.today + ' (half-off Holiday Card)</div>') + (avail ? '<div class="tot">Holiday Card + 4 cards of 2027: ' + s.tot[cur] + ' total</div>' : '') + '<a class="btn sm dark" ' + (avail ? '' : 'aria-disabled="true" ') + 'href="' + (link || smsFor(s, cur)) + '"' + (link ? ' target="_blank" rel="noopener"' : '') + '>' + label + '</a>';
     res.appendChild(d);
   });
   var bs = document.querySelectorAll('#plans button');
