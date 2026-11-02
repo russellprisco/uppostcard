@@ -28,7 +28,7 @@
 .rc .today{font-size:15px;font-weight:700}
 .rc .btn{margin-top:auto;justify-content:center;text-align:center}
 .rc .btn[aria-disabled="true"]{opacity:.45;pointer-events:none}
-.save{font-weight:700;color:#1e7a4c}.cph{font-weight:700}.tot{font-size:14px;color:var(--muted)}@media (prefers-color-scheme:dark){.save{color:#58c58d}}
+.save{font-weight:700;color:#1e7a4c}.cph{font-weight:700}.sv2{font-weight:600;color:var(--muted);font-size:14px}.tot{font-size:14px;color:var(--muted)}@media (prefers-color-scheme:dark){.save{color:#58c58d}}
 .terms{margin-top:18px;font-size:14px;color:var(--muted);max-width:760px}
 @media (max-width:900px){.res{grid-template-columns:repeat(2,minmax(0,1fr))}}@media (max-width:520px){.res{grid-template-columns:1fr}.plans button{flex:1;padding:12px 8px;font-size:15px}}
 
@@ -104,6 +104,8 @@ var PLAN = {
   monthly: { label: "Monthly", note: "Pay half of your Holiday Card ad today, then 12 monthly payments starting in " + START + ". Monthly is slightly higher because it is spread over 12 payments. Coupon, single and double only.", terms: "By completing your order, you agree to a 12-month commitment for all four 2027 cards." }
 };
 var cur = "full";
+function num(x) { return parseInt(String(x).replace(/[$,]/g, ''), 10) || 0; }
+function money(n) { return '$' + n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','); }
 function smsFor(s, p) { return 'sms:+19062990083?&body=' + encodeURIComponent("Hi Russell, I'd like the " + s.n.toLowerCase() + " on the " + PLAN[p].label.toLowerCase() + " plan with the half-off Holiday Card. My business is: "); }
 function render() {
   var res = document.getElementById('res'); res.innerHTML = '';
@@ -116,7 +118,7 @@ function render() {
     else if (cur === 'quarterly') { big = s.q; sub = 'per card, 4 payments starting in ' + START; label = 'Start quarterly \u00b7 ' + s.today + ' today'; }
     else { avail = !!s.m; big = s.m ? s.m : 'N/A'; sub = s.m ? 'per month, 12 payments starting in ' + START : 'Not offered monthly. Choose quarterly or pay in full.'; label = avail ? 'Start monthly \u00b7 ' + s.today + ' today' : 'Not available'; }
     var link = (LINKS[cur] && LINKS[cur][s.k]) || '';
-    d.innerHTML = '<h3>' + s.n + '</h3><div class="big">' + big + '</div><div class="sub2">' + sub + '</div>' + (avail ? '<div class="cph">' + s.cph[cur] + '\u00a2 per household, per card</div><div class="save">Save ' + s.sv[cur] + ' on your 2027 cards vs. regular price</div>' : '') + (cur === 'full' ? '' : '<div class="today">Today: ' + s.today + ' (half-off Holiday Card)</div>') + (avail ? '<div class="tot">Holiday Card + 4 cards of 2027: ' + s.tot[cur] + ' total</div>' : '') + '<a class="btn sm dark" ' + (avail ? '' : 'aria-disabled="true" ') + 'href="' + (link || smsFor(s, cur)) + '"' + (link ? ' target="_blank" rel="noopener"' : '') + '>' + label + '</a>';
+    d.innerHTML = '<h3>' + s.n + '</h3><div class="big">' + big + '</div><div class="sub2">' + sub + '</div>' + (avail ? '<div class="cph">' + s.cph[cur] + '\u00a2 per household, per card</div><div class="save">Save ' + money(num(s.sv[cur]) + num(s.today)) + ' <span class="sv2">(' + s.today + ' on your Holiday Card + ' + s.sv[cur] + ' on your 2027 cards)</span></div>' : '') + (cur === 'full' ? '' : '<div class="today">Today: ' + s.today + ' (half-off Holiday Card)</div>') + (avail ? '<div class="tot">Holiday Card + 4 cards of 2027: ' + s.tot[cur] + ' total</div>' : '') + '<a class="btn sm dark" ' + (avail ? '' : 'aria-disabled="true" ') + 'href="' + (link || smsFor(s, cur)) + '"' + (link ? ' target="_blank" rel="noopener"' : '') + '>' + label + '</a>';
     res.appendChild(d);
   });
   var bs = document.querySelectorAll('#plans button');
