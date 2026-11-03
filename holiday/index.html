@@ -84,11 +84,11 @@ nav.sticky .one{flex:1}
 @media (max-width:760px){.cmp{grid-template-columns:1fr}}
 .hero{overflow:hidden}
 
-.wg{display:grid;gap:14px;margin-top:22px;grid-template-columns:1fr}.wg article{background:#fff;border:2px solid #d5dde8;border-top:6px solid #1e7a4c;padding:18px 20px}.wg h3{margin:0 0 8px;font-size:22px;text-transform:uppercase}.wg p{margin:0;color:var(--muted)}.wg .more{margin-top:8px;font-weight:700;color:#1e7a4c}
-.stp{display:grid;gap:12px;margin-top:22px;grid-template-columns:1fr;counter-reset:st}.stp li{list-style:none;position:relative;background:#fff;border:2px solid #d5dde8;padding:16px 18px 16px 64px}.stp li:before{counter-increment:st;content:counter(st);position:absolute;left:16px;top:14px;width:36px;height:36px;border-radius:50%;background:#c1272d;color:#fff;font:700 20px/36px var(--font-display);text-align:center}.stp b{display:block;font-size:18px}.stp span{color:var(--muted)}
-.towns{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px;padding:0}.towns li{list-style:none;background:#0e0f31;color:#fff;padding:8px 14px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;font-size:14px}
-.qt{margin:24px auto 0;max-width:640px;background:#fff;border-left:6px solid #c1272d;padding:18px 22px;font-size:20px;line-height:1.35}.qt cite{display:block;margin-top:10px;font-size:14px;font-style:normal;color:var(--muted);font-weight:700}
-.adg{display:grid;gap:12px;grid-template-columns:repeat(2,1fr);margin-top:22px}.adg button{display:block;width:100%;padding:0;border:0;background:#fff;box-shadow:0 4px 14px rgba(14,15,49,.18);cursor:zoom-in}.adg img{display:block;width:100%;height:auto}
+.wg{display:grid;gap:14px;margin-top:22px;grid-template-columns:1fr}.wg article{background:var(--surface);border:1px solid var(--line);border-top:6px solid #1e7a4c;padding:20px 22px;box-shadow:0 6px 18px rgba(0,0,0,.12)}.wg h3{margin:0 0 10px;font-size:28px;line-height:1.05;text-transform:uppercase;color:var(--ink)}.wg p{margin:0;color:var(--muted);font-size:17px}.wg .more{margin-top:12px;font-weight:700;color:#2fa869}
+.wg.areas article{text-align:center;border-top-color:#c1272d}.wg.areas .big{display:block;font-family:var(--font-display);font-weight:700;font-size:44px;line-height:1;color:var(--ink);margin-top:2px}.wg.areas .big small{display:block;font-family:var(--font-body);font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:6px}
+.stp{display:grid;gap:12px;margin-top:22px;grid-template-columns:1fr;counter-reset:st;padding:0}.stp li{list-style:none;position:relative;background:var(--surface);border:1px solid var(--line);padding:18px 20px 18px 74px;box-shadow:0 6px 18px rgba(0,0,0,.12)}.stp li:before{counter-increment:st;content:counter(st);position:absolute;left:18px;top:50%;transform:translateY(-50%);width:42px;height:42px;border-radius:50%;background:#c1272d;color:#fff;font:700 24px/42px var(--font-display);text-align:center}.stp b{display:block;font-size:20px;color:var(--ink);margin-bottom:4px}.stp span{color:var(--muted);font-size:16px}
+.qt{margin:24px auto 0;max-width:640px;background:var(--surface);border-left:6px solid #c1272d;padding:18px 22px;font-size:20px;line-height:1.35;color:var(--ink)}.qt cite{display:block;margin-top:10px;font-size:14px;font-style:normal;color:var(--muted);font-weight:700}
+.adg{display:grid;gap:12px;grid-template-columns:repeat(2,1fr);margin-top:22px}.adg button{display:block;width:100%;padding:0;border:0;background:var(--surface);box-shadow:0 4px 14px rgba(0,0,0,.25);cursor:zoom-in}.adg img{display:block;width:100%;height:auto}
 @media(min-width:760px){.wg{grid-template-columns:repeat(3,1fr)}.stp{grid-template-columns:repeat(2,1fr)}.adg{grid-template-columns:repeat(3,1fr)}}
 </style>
 <link rel="icon" href="/favicon.ico" sizes="any"><link rel="icon" type="image/png" sizes="48x48" href="/img/favicon-48.png"><link rel="apple-touch-icon" href="/img/apple-touch-icon.png"></head>
@@ -165,10 +165,10 @@ nav.sticky .one{flex:1}
     </ul>
   </div>
 </section>
-<section class="s" id="who">
+<section class="s band" id="who">
   <div class="wrap">
     <p class="label">Who is this for?</p>
-    <h2>Made for local businesses</h2>
+    <h2>Made for local businesses like yours</h2>
     <p class="lead">Any local business that wants more exposure with the people who live in Houghton County.</p>
     <div class="wg">
       <article><h3>Service-based businesses</h3><p>Plumbers, electricians, roofers, heating and cooling, cleaners, salons, massage, fitness, insurance, auto repair.</p><p class="more">And more. Any service-based business.</p></article>
@@ -181,7 +181,7 @@ nav.sticky .one{flex:1}
   <div class="wrap">
     <p class="label">How it works</p>
     <h2>Four easy steps</h2>
-    <ol class="stp" style="padding:0">
+    <ol class="stp">
       <li><b>Check your category</b><span>Text us your business. We tell you right away if your category is open, and send a free mockup.</span></li>
       <li><b>Approve your ad</b><span>We design it for free using your logo and offer. Nothing prints until you approve it.</span></li>
       <li><b>Reserve your spot</b><span>Pick your size and check out securely. Printing, postage and design are included.</span></li>
@@ -189,15 +189,15 @@ nav.sticky .one{flex:1}
     </ol>
   </div>
 </section>
-<section class="s" id="where">
+<section class="s band" id="where">
   <div class="wrap">
     <p class="label">Where it goes</p>
     <h2>Mailed across Houghton County</h2>
     <p class="lead">About 15,000 homes, in three areas of about 5,000 each:</p>
-    <div class="wg">
-      <article><h3>Houghton and Chassell</h3><p class="more" style="margin:0">About 5,000 homes</p></article>
-      <article><h3>Hancock and Lake Linden</h3><p class="more" style="margin:0">About 5,000 homes</p></article>
-      <article><h3>Laurium, Calumet and Mohawk</h3><p class="more" style="margin:0">About 5,000 homes</p></article>
+    <div class="wg areas">
+      <article><span class="big">About 5,000<small>homes</small></span><h3 style="margin-top:14px">Houghton and Chassell</h3></article>
+      <article><span class="big">About 5,000<small>homes</small></span><h3 style="margin-top:14px">Hancock and Lake Linden</h3></article>
+      <article><span class="big">About 5,000<small>homes</small></span><h3 style="margin-top:14px">Laurium, Calumet and Mohawk</h3></article>
     </div>
   </div>
 </section>
@@ -230,7 +230,7 @@ nav.sticky .one{flex:1}
     <p class="lead" style="margin-top:18px"><a href="../houghton/">See real ads from every past card</a></p>
   </div>
 </section>
-<section class="s" id="mailbox">
+<section class="s band" id="mailbox">
   <div class="wrap" style="text-align:center">
     <p class="label">Real mail, real mailbox</p>
     <h2>This is what it looks like when it arrives</h2>
