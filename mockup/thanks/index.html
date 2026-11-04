@@ -105,8 +105,8 @@ var PIXEL_ID = "2365810330822956";
     !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
     fbq('init', PIXEL_ID); fbq('track', 'PageView'); fbq('track', 'Lead');
   }
-  var biz = '', phone = '';
-  try { biz = sessionStorage.getItem('mk_biz') || ''; phone = sessionStorage.getItem('mk_phone') || ''; } catch (e) {}
+  var biz = '', phone = '', size = '', rid = '';
+  try { biz = sessionStorage.getItem('mk_biz') || ''; phone = sessionStorage.getItem('mk_phone') || ''; size = sessionStorage.getItem('mk_size') || ''; rid = sessionStorage.getItem('mk_id') || ''; } catch (e) {}
   if (biz) document.getElementById('h').innerHTML = 'Thanks! <em>Your free mockup for ' + biz.replace(/[<>&"]/g, '') + ' is on its way</em>';
   var f = document.getElementById('of'), go = document.getElementById('ogo');
   f.addEventListener('submit', function (e) {
@@ -115,7 +115,7 @@ var PIXEL_ID = "2365810330822956";
     if (d.botcheck) return;
     if (!d.offer) { document.getElementById('offertext').focus(); return; }
     go.disabled = true; go.textContent = 'Sending...';
-    fetch('https://api.web3forms.com/submit', { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify({ access_key: WEB3FORMS_KEY, subject: 'Offer idea' + (biz ? ' for ' + biz : ''), from_name: 'UP Postcard mockup page', business: biz || 'see earlier request', phone: phone || 'see earlier request', offer_idea: d.offer, page: 'uppostcard.com/mockup/thanks' }) })
+    fetch('https://api.web3forms.com/submit', { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify({ access_key: WEB3FORMS_KEY, subject: 'Offer idea' + (rid ? ' [' + rid + ']' : '') + (biz ? ': ' + biz : ''), from_name: 'UP Postcard mockup page', request_id: rid || 'see earlier request', business: biz || 'see earlier request', phone: phone || 'see earlier request', size: size || 'see earlier request', offer_idea: d.offer, page: 'uppostcard.com/mockup/thanks' }) })
       .then(function (r) { return r.json(); })
       .then(function (j) { if (j && j.success) { document.getElementById('offerform').hidden = true; document.getElementById('ook').hidden = false; } else throw new Error('x'); })
       .catch(function () { go.disabled = false; go.textContent = 'Add my offer'; alert('Sorry, that did not go through. You can text your offer to (906) 299-0083.'); });
