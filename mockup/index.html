@@ -219,16 +219,16 @@ var SMS_NUMBER = "+19062990083";
   }
   var f = document.getElementById('mf'), err = document.getElementById('err'), go = document.getElementById('go');
   function showErr(m) { err.textContent = m; err.hidden = false; }
+  var saved = {};
   function thanks() {
-    document.getElementById('formwrap').hidden = true;
-    document.getElementById('thanks').hidden = false;
-    if (PIXEL_ID && window.fbq) fbq('track', 'Lead');
-    document.getElementById('form').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    try { sessionStorage.setItem('mk_biz', saved.business || ''); sessionStorage.setItem('mk_phone', saved.phone || ''); } catch (e) {}
+    window.location.href = 'thanks/';
   }
   f.addEventListener('submit', function (e) {
     e.preventDefault(); err.hidden = true;
     var d = {}; new FormData(f).forEach(function (v, k) { d[k] = String(v).trim(); });
     if (d.botcheck) return;
+    saved = d;
     if (!d.business || !d.phone) { showErr('Please enter your business name and phone number.'); return; }
     if (d.phone.replace(/\D/g, '').length < 10) { showErr('Please enter a phone number with area code.'); return; }
     if (!WEB3FORMS_KEY) {
