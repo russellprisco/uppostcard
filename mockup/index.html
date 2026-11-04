@@ -104,32 +104,21 @@ section.s{padding-block:52px 8px}
     </div>
     <div class="formcard" id="form">
       <div id="formwrap">
-        <h2>Get My Free Mockup</h2>
-        <p class="fs">Takes about 30 seconds. We will reach out to confirm your category and get your mockup started.</p>
+        <h2>Request My Free Mockup</h2>
+        <p class="fs">Just two quick things. We will text you your free mockup.</p>
         <form id="mf" novalidate>
           <input class="hp" type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true">
-          <label>Your name<input type="text" name="name" autocomplete="name" required></label>
           <label>Business name<input type="text" name="business" autocomplete="organization" required></label>
-          <label>Phone<input type="tel" name="phone" autocomplete="tel" inputmode="tel" required></label>
-          <label><span>Email <small>(optional)</small></span><input type="email" name="email" autocomplete="email" inputmode="email"></label>
-          <label>What kind of business is it?<input type="text" name="category" placeholder="Example: plumber, restaurant, salon" required></label>
-          <label>Ad size you are curious about
-            <select name="size">
-              <option value="Not sure yet">Not sure yet</option>
-              <option value="Coupon">Coupon</option>
-              <option value="Single">Single</option>
-              <option value="Double">Double</option>
-              <option value="Quad">Quad</option>
-            </select>
-          </label>
+          <label>What phone number should we text?<input type="tel" name="phone" autocomplete="tel" inputmode="tel" placeholder="(906) 555-1234" required></label>
+          <label><span>Website or Facebook page <small>(optional, helps us match your look)</small></span><input type="text" name="link" inputmode="url" autocapitalize="off" autocorrect="off" placeholder="facebook.com/yourbusiness"></label>
           <p class="err" id="err" role="alert" hidden></p>
-          <button class="go" type="submit" id="go">Get My Free Mockup</button>
-          <p class="fine">No payment. No obligation. We will never share your info.</p>
+          <button class="go" type="submit" id="go">Request My Free Mockup</button>
+          <p class="fine">Free. No payment, no obligation. We will never share your info.</p>
         </form>
       </div>
       <div class="thanks" id="thanks" hidden>
         <h2>Got it. Thank you!</h2>
-        <p>We will text or call you soon to confirm your category and get your free mockup started.</p>
+        <p>We will text you soon to confirm your category and get your free mockup started.</p>
         <p>Want to talk right now? Call or text <a href="tel:+19062990083"><strong>(906) 299-0083</strong></a>.</p>
       </div>
     </div>
@@ -158,7 +147,7 @@ section.s{padding-block:52px 8px}
   <div class="wrap">
     <p class="label">Ad sizes</p>
     <h2>Pick a size, or let us suggest one</h2>
-    <p class="lead">Not sure which size fits? That is okay. Tell us about your business in the form and we will show you a mockup. Tap any ad to see it full size.</p>
+    <p class="lead">Not sure which size fits? That is okay. Just send your business name and phone number and we will show you a mockup. Tap any ad to see it full size.</p>
     <div class="szg">
       <div class="sz"><h3>Coupon</h3><p>A clip-out offer with your contact info.</p><button type="button" data-expand aria-label="Open coupon ad example full size"><img src="../img/ads/coupon-jims-pizza.webp" width="1050" height="540" alt="Jim's Pizza coupon ad example" loading="lazy"></button></div>
       <div class="sz"><h3>Single</h3><p>A business card sized spot.</p><button type="button" data-expand aria-label="Open single ad example full size"><img src="../img/ads/single-uncles-diner.webp" width="1000" height="542" alt="Uncle's Local Diner single ad example" loading="lazy"></button></div>
@@ -187,7 +176,7 @@ section.s{padding-block:52px 8px}
     <p class="label">How it works</p>
     <h2>Three easy steps</h2>
     <ol class="steps">
-      <li><b>Tell us about your business</b><span>Fill out the short form above. It takes about 30 seconds.</span></li>
+      <li><b>Tell us about your business</b><span>Send your business name and phone number above. It takes about 15 seconds.</span></li>
       <li><b>We make your mockup</b><span>We check that your category is open and design your ad on the card, free.</span></li>
       <li><b>You decide</b><span>Love it? We will get you on the card. Not for you? No hard feelings.</span></li>
     </ol>
@@ -198,7 +187,7 @@ section.s{padding-block:52px 8px}
   <div class="wrap">
     <h2>Ready to see your ad on the card?</h2>
     <p>Spots are open through Thursday, November 12, or until they sell out.</p>
-    <a class="btn" href="#form" id="up">Get My Free Mockup</a>
+    <a class="btn" href="#form" id="up">Request My Free Mockup</a>
     <p class="numline">Or call or text <a href="tel:+19062990083"><strong>(906) 299-0083</strong></a></p>
   </div>
 </section>
@@ -232,10 +221,10 @@ var SMS_NUMBER = "+19062990083";
     e.preventDefault(); err.hidden = true;
     var d = {}; new FormData(f).forEach(function (v, k) { d[k] = String(v).trim(); });
     if (d.botcheck) return;
-    if (!d.name || !d.business || !d.phone || !d.category) { showErr('Please fill in your name, business, phone and business type.'); return; }
+    if (!d.business || !d.phone) { showErr('Please enter your business name and phone number.'); return; }
     if (d.phone.replace(/\D/g, '').length < 10) { showErr('Please enter a phone number with area code.'); return; }
     if (!WEB3FORMS_KEY) {
-      var body = 'Hi, I would like a free mockup for the holiday postcard.\nName: ' + d.name + '\nBusiness: ' + d.business + '\nPhone: ' + d.phone + (d.email ? '\nEmail: ' + d.email : '') + '\nType: ' + d.category + '\nSize: ' + d.size;
+      var body = 'Hi, I would like a free mockup for the holiday postcard.\nBusiness: ' + d.business + '\nPhone: ' + d.phone + (d.link ? '\nWebsite/Facebook: ' + d.link : '');
       if (PIXEL_ID && window.fbq) fbq('track', 'Lead');
       window.location.href = 'sms:' + SMS_NUMBER + '?&body=' + encodeURIComponent(body);
       return;
@@ -245,14 +234,13 @@ var SMS_NUMBER = "+19062990083";
       access_key: WEB3FORMS_KEY,
       subject: 'New free mockup request: ' + d.business,
       from_name: 'UP Postcard mockup page',
-      name: d.name, business: d.business, phone: d.phone, email: d.email || 'not given', category: d.category, size: d.size,
+      business: d.business, phone: d.phone, website_or_facebook: d.link || 'not given',
       page: 'uppostcard.com/mockup'
     };
-    if (d.email) payload.replyto = d.email;
     fetch('https://api.web3forms.com/submit', { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify(payload) })
       .then(function (r) { return r.json(); })
       .then(function (j) { if (j && j.success) thanks(); else throw new Error('fail'); })
-      .catch(function () { go.disabled = false; go.textContent = 'Get My Free Mockup'; showErr('Sorry, that did not go through. Please call or text (906) 299-0083 and we will take care of it.'); });
+      .catch(function () { go.disabled = false; go.textContent = 'Request My Free Mockup'; showErr('Sorry, that did not go through. Please call or text (906) 299-0083 and we will take care of it.'); });
   });
 
   var lb = document.getElementById('lb'), lbi = document.getElementById('lbi'), lbx = document.getElementById('lbx');
