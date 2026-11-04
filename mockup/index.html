@@ -105,12 +105,21 @@ section.s{padding-block:52px 8px}
     <div class="formcard" id="form">
       <div id="formwrap">
         <h2>Request My Free Mockup</h2>
-        <p class="fs">Just two quick things. We will text you your free mockup.</p>
+        <p class="fs">Just a few quick things. We will text you your free mockup.</p>
         <form id="mf" novalidate>
           <input class="hp" type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true">
           <label>Business name<input type="text" name="business" autocomplete="organization" required></label>
           <label>What phone number should we text?<input type="tel" name="phone" autocomplete="tel" inputmode="tel" placeholder="(906) 555-1234" required></label>
           <label><span>Website or Facebook page <small>(optional, helps us match your look)</small></span><input type="text" name="link" inputmode="url" autocapitalize="off" autocorrect="off" placeholder="facebook.com/yourbusiness"></label>
+          <label>Which size should we mock up?
+            <select name="size">
+              <option value="All sizes">All sizes, show me my options</option>
+              <option value="Coupon">Coupon</option>
+              <option value="Single">Single (business card size)</option>
+              <option value="Double">Double</option>
+              <option value="Quad">Quad (biggest)</option>
+            </select>
+          </label>
           <p class="err" id="err" role="alert" hidden></p>
           <button class="go" type="submit" id="go">Request My Free Mockup</button>
           <p class="fine">Free. No payment, no obligation. We will never share your info.</p>
@@ -224,7 +233,7 @@ var SMS_NUMBER = "+19062990083";
     if (!d.business || !d.phone) { showErr('Please enter your business name and phone number.'); return; }
     if (d.phone.replace(/\D/g, '').length < 10) { showErr('Please enter a phone number with area code.'); return; }
     if (!WEB3FORMS_KEY) {
-      var body = 'Hi, I would like a free mockup for the holiday postcard.\nBusiness: ' + d.business + '\nPhone: ' + d.phone + (d.link ? '\nWebsite/Facebook: ' + d.link : '');
+      var body = 'Hi, I would like a free mockup for the holiday postcard.\nBusiness: ' + d.business + '\nPhone: ' + d.phone + (d.link ? '\nWebsite/Facebook: ' + d.link : '') + '\nSize: ' + d.size;
       if (PIXEL_ID && window.fbq) fbq('track', 'Lead');
       window.location.href = 'sms:' + SMS_NUMBER + '?&body=' + encodeURIComponent(body);
       return;
@@ -234,7 +243,7 @@ var SMS_NUMBER = "+19062990083";
       access_key: WEB3FORMS_KEY,
       subject: 'New free mockup request: ' + d.business,
       from_name: 'UP Postcard mockup page',
-      business: d.business, phone: d.phone, website_or_facebook: d.link || 'not given',
+      business: d.business, phone: d.phone, website_or_facebook: d.link || 'not given', size: d.size,
       page: 'uppostcard.com/mockup'
     };
     fetch('https://api.web3forms.com/submit', { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify(payload) })
